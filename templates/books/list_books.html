@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Books</h1>
+
+<p><a href="{% url 'add_book' %}">Add New Book</a></p>
+
+<div class="flex flex-wrap">
+  {% for book in books %}
+  <div class="w-33 pa3">
+    <a href="{% url 'show_book' pk=book.pk %}">
+      <h2>{{ book.title }}</h2>
+    </a>
+
+    {% if book.author %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-phone"></i></div>
+      <div><b>Author:</b> {{ book.author }}</div>
+    </div>
+    {% endif %}
+
+    {% if book.description %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-ui-email"></i></div>
+      <div><b>Description:</b> {{ book.description }}</div>
+    </div>
+    {% endif %}
+
+    {% if book.date_added %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-ui-email"></i></div>
+      <div><b>Date Added:</b> {{ book.date_added }}</div>
+    </div>
+    {% endif %}
+
+    {% if book.artwork %}
+    <div class="flex">
+      <div class="pr2 "></div>
+      <a href="{% url 'show_book' pk=book.pk %}"><img src="{{ book.artwork }}"></a>
+      <div>{{ book.artwork }}</div>
+    </div>
+    {% endif %}
+
+    <p>
+      <a href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
+      <a class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
+    </p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

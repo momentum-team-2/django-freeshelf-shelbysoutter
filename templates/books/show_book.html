@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w-33 pa3">
+  <h2>{{ book.title }}</h2>
+
+  {% if book.author %}
+  <div class="flex">
+    <div class="pr2"><i class="icofont-phone"></i></div>
+    <div>{{ book.author }}</div>
+  </div>
+  {% endif %}
+
+  {% if book.description %}
+  <div class="flex">
+    <div class="pr2"><i class="icofont-ui-email"></i></div>
+    <div>{{ book.description }}</div>
+  </div>
+  {% endif %}
+
+  {% if book.date_added %}
+  <div class="flex">
+    <div class="pr2"><i class="icofont-ui-email"></i></div>
+    <div>{{ book.date_added }}</div>
+  </div>
+  {% endif %}
+
+  {% if book.artwork %}
+  <a href="{% url 'show_book' pk=book.pk %}"><img src="{{ book.artwork }}"></a>
+  {% endif %}
+
+  <p>
+    <a href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
+    <a class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
+  </p>
+</div>
+{% endblock %}
