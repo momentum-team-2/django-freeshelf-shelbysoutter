@@ -9,6 +9,8 @@ def home(request):
     if request.user.is_authenticated:
         return redirect('list_books')
 
+    return render(request, 'books/home.html')
+
 def list_books(request):
     books = Book.objects.order_by('-id')
     return render(request, 'books/list_books.html', {'books': books})
