@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Book
+from .models import Book, Category
 from .forms import BookForm
 
 # Create your views here.
@@ -55,3 +55,10 @@ def delete_book(request, pk):
         return redirect(to='list_books')
 
     return render(request, 'books/delete_book.html', {'book': book})
+
+
+def show_category(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    books = category.books.all()
+
+    return render(request, 'books/show_category.html', {'category': category, 'books': books})

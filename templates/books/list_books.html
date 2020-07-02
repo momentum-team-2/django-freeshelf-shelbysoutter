@@ -34,11 +34,7 @@
     {% endif %}
 
     {% if book.artwork %}
-    <div class="flex">
-      <div class="pr2 "></div>
-      <a href="{% url 'show_book' pk=book.pk %}"><img src="{{ book.artwork }}"></a>
-      <div>{{ book.artwork }}</div>
-    </div>
+    <a href="{% url 'show_book' pk=book.pk %}"><img src="{{ book.artwork }}" class='db link dim tc w-100 db outline black-10'></a>
     {% endif %}
 
     <p>

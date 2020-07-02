@@ -2,26 +2,27 @@
 
 {% block content %}
 <div class="w-33 pa3">
-  <h2>{{ book.title }}</h2>
+  <h1>Book Details</h1>
+  <h2><i>{{ book.title }}</i></h2>
 
   {% if book.author %}
   <div class="flex">
     <div class="pr2"><i class="icofont-phone"></i></div>
-    <div>{{ book.author }}</div>
+    <div><b>Author:</b> {{ book.author }}</div>
   </div>
   {% endif %}
 
   {% if book.description %}
   <div class="flex">
     <div class="pr2"><i class="icofont-ui-email"></i></div>
-    <div>{{ book.description }}</div>
+    <div><b>Description:</b> {{ book.description }}</div>
   </div>
   {% endif %}
 
   {% if book.date_added %}
   <div class="flex">
     <div class="pr2"><i class="icofont-ui-email"></i></div>
-    <div>{{ book.date_added }}</div>
+    <div><b>Date Added:</b> {{ book.date_added }}</div>
   </div>
   {% endif %}
 
@@ -33,5 +34,8 @@
     <a href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
     <a class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
   </p>
+  
+
+<a href={% url 'list_books' %}>Back to all books</a>
 </div>
 {% endblock %}
