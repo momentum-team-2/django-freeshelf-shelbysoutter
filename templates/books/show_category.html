@@ -2,9 +2,11 @@
 
 {% block content %}
 
-<h2>Book Category</h2>
+<h1>Book Category</h1>
 
-<div class="flex">
-    <div class="pr2"><i class="icofont-phone"></i></div>
-    <div>{{ category.name }}</div>
-  </div>
+<h2> {{ category.name }}</h2>
+{% for book in books %}
+<p>{{ book.title }}</p>
+{% endfor %}
+
+{% endblock content %}

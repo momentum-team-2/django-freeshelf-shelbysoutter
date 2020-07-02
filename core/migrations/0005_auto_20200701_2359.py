@@ -4,14 +4,15 @@ from django.db import migrations
 from data_files.categories import categories
 
 
-def create_slug(apps, schema_editor):
-    Category = apps.get_model('core', 'Category')
-    for category in categories:
-        Category.objects.create(name=category)
-
-
 
 class Migration(migrations.Migration):
+
+    def create_slug(apps, schema_editor):
+        Category = apps.get_model('core', 'Category')
+        categories = Category.objects.all()
+        for category in categories:
+            category.slug = slugify(category.name)
+            category.save()
 
 
     dependencies = [

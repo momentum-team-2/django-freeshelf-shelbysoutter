@@ -31,11 +31,14 @@
   {% endif %}
 
   <p>
-    <a href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
-    <a class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
+    <a style="text-decoration:none" href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
+    <a style="text-decoration:none" class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
   </p>
   
+  {% for category in book.categories.all %}
+  <a style="text-decoration:none" href= {% url 'show_category' category.slug %} >{{ category }}</a>
+  {% endfor %}
 
-<a href={% url 'list_books' %}>Back to all books</a>
+<a style="text-decoration:none" href={% url 'list_books' %}>Back to all books</a>
 </div>
 {% endblock %}

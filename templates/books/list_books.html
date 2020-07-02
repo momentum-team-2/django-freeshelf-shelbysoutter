@@ -3,7 +3,7 @@
 {% block content %}
 <h1>All Books</h1>
 
-<p><a href="{% url 'add_book' %}">Add New Book</a></p>
+<p><a style="text-decoration:none" href="{% url 'add_book' %}">Add New Book</a></p>
 
 <div class="flex flex-wrap">
   {% for book in books %}
@@ -34,12 +34,12 @@
     {% endif %}
 
     {% if book.artwork %}
-    <a href="{% url 'show_book' pk=book.pk %}"><img src="{{ book.artwork }}" class='db link dim tc w-100 db outline black-10'></a>
+    <a style="text-decoration:none" href="{% url 'show_book' pk=book.pk %}"><img src="{{ book.artwork }}" class='db link dim tc w-100 db outline black-10'></a>
     {% endif %}
 
     <p>
-      <a href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
-      <a class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
+      <a style="text-decoration:none" href="{% url 'edit_book' pk=book.pk %}">Edit Book</a><br>
+      <a style="text-decoration:none" class="red" href="{% url 'delete_book' pk=book.pk %}">Delete Book</a>
     </p>
   </div>
   {% endfor %}
